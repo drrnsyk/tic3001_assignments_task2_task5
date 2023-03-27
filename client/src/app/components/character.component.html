@@ -1,0 +1,68 @@
+<h1>Marvel Character Details:</h1>
+
+<div *ngIf="character != null">
+    <ul>
+        <span><img src="{{character.imageurl}}" width="300" height="300"></span>
+        <table>
+            <tr>
+                <td><h2>{{character.name}}</h2></td>
+            </tr>
+            <tr><td [width]="300">{{character.description}}</td></tr>
+        </table>
+
+        <br>
+
+        <table>
+            <tr>
+                <td><a [routerLink]="[ '/' ]"><button type="button">Back to search</button></a></td>
+            </tr>
+        </table>
+
+        <br>
+        <hr [width]="300" align="left">
+        <br>
+
+        <table>
+            <tr>
+                <td><a [routerLink]="[ '/character', character.id, 'comment' ]"><button type="button">Insert comment</button></a></td>
+            </tr>
+        </table>
+
+        <div>
+            <table>
+                <tr>
+                    <td><h3>List of comments:</h3></td>
+                </tr>
+            </table>
+    
+            <div *ngFor="let i of insertedComments">
+                <table border="1" style="width: 13.3em">
+                    <tr>
+                        <b>Comment ID:</b>
+                    </tr>
+                    <tr>
+                        <td [width]="200">{{i.commentId}}</td>
+                    </tr>
+                    <tr>
+                        <b>Comment:</b>
+                    </tr>
+                    <tr>
+                        <td [width]="200">{{i.comment}}</td>
+                    </tr>
+                    <tr>
+                        <b>Comment Timestamp:</b>
+                    </tr>
+                    <tr>
+                        <td>{{i.postedDate}}</td>
+                    </tr>
+                </table>
+                <!-- <a [routerLink]="[ '/character', character.id, 'editcomment' ]"><button type="button">Edit Comment</button></a> -->
+                <button type="button" (click)="doEditComment(i.commentId)">Edit Comment</button>
+                <button type="button" (click)="doDeleteComment(i.commentId)">Delete Comment</button>
+                <br>
+                <br>
+            </div>
+            
+        </div>
+    </ul>
+</div>

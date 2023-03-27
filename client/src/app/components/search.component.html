@@ -1,0 +1,81 @@
+<h1>Search for a Marvel Character:</h1>
+
+<div>
+    <form [formGroup]="searchForm" (ngSubmit)="doSearch()">
+        <table>
+            <tr>
+                <td><input type="text" size="30" formControlName="searchTerm"></td>
+                <td><button type="submit">Search!</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+
+<div>
+    <div *ngIf="characters.length > 0">
+        <form [formGroup]="pageForm">
+            <h2>Search result for {{searchTerm}}:</h2>
+            <tr>
+                <td>No. of characters per page to display:</td>
+                &nbsp;
+                <td>
+                    <select formControlName="noOfRecPerPage" (change)="newRecPerPage()">
+                        <option value=5>5</option>
+                        <option value=10>10</option>
+                        <option value=15>15</option>
+                        <option selected value=20>20</option>
+                    </select>
+                </td>
+            </tr>
+            <ul *ngFor="let c of characters">
+                <span><img src="{{c.imageurl}}" width="50" height="50"></span>
+                &nbsp;
+                <a  [routerLink]="[ '/character', c.id ]">
+                    <span>{{c.name}}</span>
+                </a>
+            </ul>
+    
+            <div *ngIf="pageNo == 1">
+                <button disabled type="button" (click)="previousPage()">Previous</button>
+                &nbsp;
+                page {{pageNo}}
+                &nbsp;
+                <button type="button" (click)="nextPage()">Next</button>
+            </div>
+    
+            <div *ngIf="pageNo > 1">
+                <button type="button" (click)="previousPage()">Previous</button>
+                &nbsp;
+                page {{pageNo}}
+                &nbsp;
+                <button type="button" (click)="nextPage()">Next</button>
+            </div>
+        </form>
+    </div>
+    
+    <div *ngIf="characters.length == 0 && offsetCurrentIndex != 0">
+        <form [formGroup]="pageForm">
+            <h2>Search result for {{searchTerm}}:</h2>
+            <h3>Oops, there is no more result to display, go back!</h3>
+            <div *ngIf="pageNo == 1">
+                <button disabled type="button" (click)="previousPage()">Previous</button>
+                &nbsp;
+                page {{pageNo}}
+                &nbsp;
+                <button type="button" (click)="nextPage()">Next</button>
+            </div>
+    
+            <div *ngIf="pageNo > 1">
+                <button type="button" (click)="previousPage()">Previous</button>
+                &nbsp;
+                page {{pageNo}}
+                &nbsp;
+                <button disabled type="button" (click)="nextPage()">Next</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

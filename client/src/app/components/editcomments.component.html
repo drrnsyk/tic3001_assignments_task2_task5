@@ -1,0 +1,18 @@
+<h1>Edit comments:</h1>
+
+<form [formGroup]="editCommentForm" (ngSubmit)="doUpdateComment()">
+    <div *ngFor="let i of insertedComments">
+        <tr>
+            <td><h2>Character - {{character.name}}</h2></td>
+        </tr>
+        <tr>
+            <td><h2>Comment ID - {{i.commentId}}</h2></td>
+        </tr>
+        <tr>
+            <textarea cols="65" rows = "10" class ="text-area" formControlName="comment" [(ngModel)]="comment"></textarea>
+        </tr>       
+        <button type="submit">Update</button> 
+        &nbsp;
+        <button type="button" (click)="backToCharacterView()">Cancel and go back</button>
+    </div>
+</form>

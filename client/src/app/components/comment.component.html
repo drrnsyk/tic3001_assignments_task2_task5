@@ -1,0 +1,15 @@
+<h1>Enter your comments:</h1>
+
+<form [formGroup]="commentForm" (ngSubmit)="doPostComment()">
+    <tr>
+        <td><h2>Character - {{character.name}}:</h2></td>
+    </tr>
+    <tr>
+        <textarea cols="65" rows = "10" class ="text-area" formControlName="comment"></textarea>
+    </tr>
+    
+    <button type="submit">Post</button> 
+    &nbsp;
+    <button type="button" (click)="backToCharacterView()">Cancel and go back</button>
+
+</form>
