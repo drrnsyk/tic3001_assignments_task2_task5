@@ -1,6 +1,6 @@
-<h1>Marvel Character Details:</h1>
+<h1 class="container table-responsive d-flex justify-content-center text-uppercase p-3">Marvel Character Details:</h1>
 
-<div *ngIf="character != null">
+<div class="container table-responsive d-flex justify-content-center text-uppercase p-3" *ngIf="character != null">
     <ul>
         <span><img src="{{character.imageurl}}" width="300" height="300"></span>
         <table>
@@ -14,7 +14,7 @@
 
         <table>
             <tr>
-                <td><a [routerLink]="[ '/' ]"><button type="button">Back to search</button></a></td>
+                <td><a [routerLink]="[ '/' ]"><button type="button" class="btn btn-outline-secondary">Back to search</button></a></td>
             </tr>
         </table>
 
@@ -22,21 +22,18 @@
         <hr [width]="300" align="left">
         <br>
 
-        <table>
-            <tr>
-                <td><a [routerLink]="[ '/character', character.id, 'comment' ]"><button type="button">Insert comment</button></a></td>
-            </tr>
-        </table>
-
         <div>
-            <table>
+
+            <h3>comments:</h3>
+
+            <table class="container mb-3 mt-3">
                 <tr>
-                    <td><h3>List of comments:</h3></td>
+                    <td><a [routerLink]="[ '/character', character.id, 'comment' ]"><button type="button" class="btn btn-outline-info">Insert comment</button></a></td>
                 </tr>
             </table>
     
-            <div *ngFor="let i of insertedComments">
-                <table border="1" style="width: 13.3em">
+            <div class="container mb-3 mt-3" *ngFor="let i of insertedComments">
+                <table>
                     <tr>
                         <b>Comment ID:</b>
                     </tr>
@@ -56,13 +53,13 @@
                         <td>{{i.postedDate}}</td>
                     </tr>
                 </table>
-                <!-- <a [routerLink]="[ '/character', character.id, 'editcomment' ]"><button type="button">Edit Comment</button></a> -->
-                <button type="button" (click)="doEditComment(i.commentId)">Edit Comment</button>
-                <button type="button" (click)="doDeleteComment(i.commentId)">Delete Comment</button>
-                <br>
-                <br>
-            </div>
-            
+                <div>
+                    <!-- <a [routerLink]="[ '/character', character.id, 'editcomment' ]"><button type="button">Edit Comment</button></a> -->
+                    <button type="button" class="btn btn-outline-warning" (click)="doEditComment(i.commentId)">Edit Comment</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-outline-danger" (click)="doDeleteComment(i.commentId)">Delete Comment</button>
+                </div>
+            </div>            
         </div>
     </ul>
 </div>

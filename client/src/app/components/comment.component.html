@@ -1,15 +1,20 @@
-<h1>Enter your comments:</h1>
+<h1 class="container table-responsive d-flex justify-content-center text-uppercase p-3">Comments:</h1>
 
-<form [formGroup]="commentForm" (ngSubmit)="doPostComment()">
-    <tr>
-        <td><h2>Character - {{character.name}}:</h2></td>
-    </tr>
-    <tr>
-        <textarea cols="65" rows = "10" class ="text-area" formControlName="comment"></textarea>
-    </tr>
-    
-    <button type="submit">Post</button> 
-    &nbsp;
-    <button type="button" (click)="backToCharacterView()">Cancel and go back</button>
-
-</form>
+<div class="container table-responsive d-flex justify-content-center text-uppercase p-3">
+    <form [formGroup]="commentForm" (ngSubmit)="doPostComment()">
+        <div>
+            <tr>
+                <td><h2>Character - {{character.name}}:</h2></td>
+            </tr>
+            <tr>
+                <td><h3>Enter and Post your Comment</h3></td>
+            </tr>
+            <tr>
+                <textarea cols="65" rows = "10" class ="text-area" formControlName="comment"></textarea>
+            </tr>
+            <button type="submit" class="btn btn-outline-success">Post</button> 
+            &nbsp;
+            <button type="button" class="btn btn-outline-secondary" (click)="backToCharacterView()">Cancel and go back</button>
+        </div>
+    </form>
+</div>

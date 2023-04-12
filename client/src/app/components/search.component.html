@@ -1,6 +1,9 @@
-<h1>Search for a Marvel Character:</h1>
+<div class="container table-responsive d-flex justify-content-center text-uppercase p-3">
+    <h1>Search for a Marvel Character:</h1>
+</div>
 
-<div>
+
+<div class="container table-responsive d-flex justify-content-center text-uppercase p-3">
     <form [formGroup]="searchForm" (ngSubmit)="doSearch()">
         <table>
             <tr>
@@ -13,8 +16,8 @@
 
 
 
-<div>
-    <div *ngIf="characters.length > 0">
+<div class="container table-responsive d-flex justify-content-center text-uppercase p-3">
+    <div class="container table-responsive d-flex justify-content-center text-uppercase p-3" *ngIf="characters.length > 0">
         <form [formGroup]="pageForm">
             <h2>Search result for {{searchTerm}}:</h2>
             <tr>
@@ -29,28 +32,28 @@
                     </select>
                 </td>
             </tr>
-            <ul *ngFor="let c of characters">
-                <span><img src="{{c.imageurl}}" width="50" height="50"></span>
-                &nbsp;
-                <a  [routerLink]="[ '/character', c.id ]">
-                    <span>{{c.name}}</span>
-                </a>
+            <ul class="list-group list-group-flush" *ngFor="let c of characters">
+                <li class="list-group-item">
+                    <span><img src="{{c.imageurl}}" width="50" height="50"></span>
+                    &nbsp;
+                    <a  [routerLink]="[ '/character', c.id ]"><span>{{c.name}}</span></a>
+                </li>
             </ul>
     
             <div *ngIf="pageNo == 1">
-                <button disabled type="button" (click)="previousPage()">Previous</button>
+                <button disabled type="button" class="btn btn-outline-dark" (click)="previousPage()">Previous</button>
                 &nbsp;
                 page {{pageNo}}
                 &nbsp;
-                <button type="button" (click)="nextPage()">Next</button>
+                <button type="button" class="btn btn-outline-dark" (click)="nextPage()">Next</button>
             </div>
     
             <div *ngIf="pageNo > 1">
-                <button type="button" (click)="previousPage()">Previous</button>
+                <button type="button" class="btn btn-outline-dark" (click)="previousPage()">Previous</button>
                 &nbsp;
                 page {{pageNo}}
                 &nbsp;
-                <button type="button" (click)="nextPage()">Next</button>
+                <button type="button" class="btn btn-outline-dark" (click)="nextPage()">Next</button>
             </div>
         </form>
     </div>
@@ -60,19 +63,19 @@
             <h2>Search result for {{searchTerm}}:</h2>
             <h3>Oops, there is no more result to display, go back!</h3>
             <div *ngIf="pageNo == 1">
-                <button disabled type="button" (click)="previousPage()">Previous</button>
+                <button disabled type="button" class="btn btn-outline-dark" (click)="previousPage()">Previous</button>
                 &nbsp;
                 page {{pageNo}}
                 &nbsp;
-                <button type="button" (click)="nextPage()">Next</button>
+                <button type="button" class="btn btn-outline-dark" (click)="nextPage()">Next</button>
             </div>
     
             <div *ngIf="pageNo > 1">
-                <button type="button" (click)="previousPage()">Previous</button>
+                <button type="button" class="btn btn-outline-dark"(click)="previousPage()">Previous</button>
                 &nbsp;
                 page {{pageNo}}
                 &nbsp;
-                <button disabled type="button" (click)="nextPage()">Next</button>
+                <button disabled type="button" class="btn btn-outline-dark" (click)="nextPage()">Next</button>
             </div>
         </form>
     </div>

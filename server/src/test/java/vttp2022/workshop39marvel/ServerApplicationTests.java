@@ -1,4 +1,4 @@
-package vttp2022.workshop39marvel.server;
+package vttp2022.workshop39marvel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
